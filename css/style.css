@@ -1,15 +1,312 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Dec 20, 2013, 12:22:05 AM
-    Author     : widodo
-*/
-
-
-p {
-    text-align: justify;
-    text-indent:50px;
+/* SLIDE */
+.caroufredsel_wrapper {float:none !important;}
+.list_carousel { position:relative; top:0;}
+.list_carousel a {color:#DE0000;}
+.list_carousel ul {margin: 0;padding: 0;list-style: none;display: block; z-index: 11; width:1550px; float:left; margin-left:55px;}
+.list_carousel li {font-size: 40px;padding: 0;display: block;float: left;}
+.list_carousel.responsive {width: auto;margin-left: 0;}
+.prev, .next {width: 55px; height:280px; background:url(../images/tpl/bg/arrow.png) no-repeat; text-indent:-9999px; position:absolute; top:0; z-index:200;} 
+.prev { background-position: left top;
+	float: left;
+	margin-left: 10px;
 }
+.next { background-position: right top; right:0;
+	float: right;
+	margin-right: 10px;
+}
+
+ul.grid {padding:0 !important; margin:0 0 0 55px;}
+.grid {max-width:1598px;margin: 0 auto;list-style: none;text-align: center;z-index:9;font-weight:lighter;}
+.grid li {display: block;width: 215px;margin: 0;padding: 10px 5px; float:left;text-align: center;position: relative;}
+.grid figure {margin: 0;position: relative;}
+.grid figure img {max-width: 100%;display: block;position: relative;}
+.grid figcaption {position: absolute;top: 0;left: 0;padding: 10px;background: #de0000;color: #e7d9d9;font-size:13px;}
+.grid figcaption h3 {margin: 0;padding: 0;color: #efcf0b;text-transform: uppercase;margin-bottom:10px;}
+.grid figcaption span:before {content: 'by ';}
+.grid figcaption a {
+	text-align: center;
+	padding: 5px;
+	border-radius: 2px;
+	display: inline-block;
+	background: #f1ae00;
+	text-shadow:1px 1px 1px #ffeab4;
+	color: #a30001;
+}
+
+/* Caption Style */
+.cs-style li {
+	-webkit-perspective: 1700px;
+	-moz-perspective: 1700px;
+	perspective: 1700px;
+	-webkit-perspective-origin: 0 70%;
+	-moz-perspective-origin: 0 70%;
+	perspective-origin: 0 70%;
+}
+
+.cs-style figure {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.cs-style figure > div {
+	overflow: hidden;
+}
+
+.cs-style figure img {
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.no-touch .cs-style figure:hover img,
+.cs-style figure.cs-hover img {
+	-webkit-transform: translateX(25%);
+	-moz-transform: translateX(25%);
+	-ms-transform: translateX(25%);
+	transform: translateX(25%);
+}
+
+.cs-style figcaption {
+	height: 100%;
+	width: 85%;
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: rotateY(-90deg);
+	-moz-transform: rotateY(-90deg);
+	transform: rotateY(-90deg);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.1s 0.3s;
+	-moz-transition: -moz-transform 0.5s, opacity 0.1s 0.3s;
+	transition: transform 0.5s, opacity 0.1s 0.3s;
+}
+
+.no-touch .cs-style figure:hover figcaption,
+.cs-style figure.cs-hover figcaption {
+	opacity: 1;
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.1s;
+	-moz-transition: -moz-transform 0.5s, opacity 0.1s;
+	transition: transform 0.5s, opacity 0.1s;
+}
+
+.cs-style figcaption a {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+.no-touch .cs-style-7 figure:hover figcaption h3,
+.no-touch .cs-style-7 figure:hover figcaption span,
+.no-touch .cs-style-7 figure:hover figcaption a,
+.cs-style-7 figure.cs-hover figcaption h3,
+.cs-style-7 figure.cs-hover figcaption span,
+.cs-style-7 figure.cs-hover figcaption a {
+	-webkit-transition: opacity 0.3s 0.2s;
+	-moz-transition: opacity 0.3s 0.2s;
+	transition: opacity 0.3s 0.2s;
+	opacity: 1;
+}
+
+@media screen and (max-width: 31.5em) {
+	.grid {
+		padding: 10px 10px 100px 10px;
+	}
+	.grid li {
+		width: 100%;
+		min-width: 300px;
+	}
+}
+
+/* SELECT OPTION DROPDOWN */
+.select {padding-top:10px;}
+form.sort { float:right; border:none; margin:0; padding:0;
+  width: 200px; height:40px;
+  position: relative; }
+
+.radio-container {
+  position: relative; padding:0; margin: 0 5%; width:90%;
+  height: 35px;
+  font-size: 13px;
+  color: #DE0000; border:none;}
+  .no-touch .radio-container:hover, .radio-container.active {
+    z-index: 9999; }
+
+.radio-options {
+  position: absolute;
+  max-height: 3em;
+  width: 100%;
+  overflow: hidden;
+  -webkit-transition: 0.7s;
+  -moz-transition: 0.7s;
+  -o-transition: 0.7s;
+  transition: 0.7s; }
+  .radio-options ul {
+    margin-top: 18px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; }
+  .radio-options li {
+	list-style:none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .radio-options label {
+    display: block;
+    padding: 0.75em;
+	background: #ffffff;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNCUiIHN0b3AtY29sb3I9IiNlNmU2ZTYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjJmMmYyIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(top,  #ffffff 0%, #ffffff 2%, #e6e6e6 2%, #f2f2f2 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(2%,#ffffff), color-stop(2%,#e6e6e6), color-stop(100%,#f2f2f2));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#ffffff 4%,#e6e6e6 4%,#f2f2f2 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#ffffff 2%,#e6e6e6 2%,#f2f2f2 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#ffffff 2%,#e6e6e6 2%,#f2f2f2 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#ffffff 2%,#e6e6e6 2%,#f2f2f2 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 );
+    opacity: 0;
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s; }
+  .radio-options input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 3em;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer; }
+  .radio-options input:checked ~ label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: 2;
+    padding: 0.75em;
+    background: #909090;
+    border-radius: 10px; }
+  .no-touch .radio-options li:hover label {
+    background: #D0D0D0; color:#DF0000;}
+  .radio-options .checked label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75em;
+    background: #DF0000;
+    visibility: visible;
+    z-index: 2; }
+  .no-touch .radio-options:hover, .active .radio-options {
+    max-height: 100em; }
+  .no-touch .radio-options:hover ul, .active .radio-options ul {
+    position: relative;
+    margin-top: 9px; padding:0;}
+  .no-touch .radio-options:hover li, .active .radio-options li {
+    position: relative; }
+  .no-touch .radio-options:hover label, .active .radio-options label {
+    opacity: 1;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; }
+  .no-touch .radio-options:hover input:checked ~ label, .active .radio-options input:checked ~ label {
+    position: static;
+    border-radius: 0; }
+  .no-touch .radio-options:hover .checked label {
+    position: static; }
+  .no-touch .radio-options:hover ul:before, .active .radio-options ul:before {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    right: 0.75em;
+    margin-right: -4px;
+    top: -9px;
+    border-style: solid;
+    border-width: 0 9px 9px 9px;
+    border-color: transparent transparent #DF0000 transparent;
+    -webkit-transform: rotate(360deg); }
+  .radio-options .toggle {
+    position: relative;
+    cursor: pointer;
+    padding: 0.75em;
+	background: #ffffff;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNCUiIHN0b3AtY29sb3I9IiNlNmU2ZTYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjJmMmYyIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(top,  #ffffff 0%, #ffffff 2%, #e6e6e6 2%, #f2f2f2 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(2%,#ffffff), color-stop(2%,#e6e6e6), color-stop(100%,#f2f2f2));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#ffffff 4%,#e6e6e6 4%,#f2f2f2 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#ffffff 2%,#e6e6e6 2%,#f2f2f2 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#ffffff 2%,#e6e6e6 2%,#f2f2f2 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#ffffff 2%,#e6e6e6 2%,#f2f2f2 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 );
+    border-radius: 10px;
+	border:1px solid #CFCFCF;
+    z-index: 1; }
+    .radio-options .toggle:before {
+      content: "";
+      border-style: solid;
+      border-width: 5px 0 5px 8.7px;
+      border-color: transparent transparent transparent #909090;
+	  text-shadow:1px 1px 1px #FFF;
+      height: 0px;
+      position: absolute;
+      right: 0.75em;
+      top: 50%;
+      margin-top: -5px;
+      width: 0px;
+      -webkit-transform: rotate(360deg); }
+  .no-touch .radio-options:hover .toggle:before, .active .radio-options .toggle:before {
+    border-width: 8.7px 5px 0 5px;
+    border-color: #DF0000 transparent transparent transparent;
+    margin-top: -2px; }
+  .radio-options input:checked ~ label:before {
+    content: "";
+    border-style: solid;
+    border-width: 5px 0 5px 8.7px;
+    border-color: transparent transparent transparent #DF0000;
+    height: 0px;
+    position: absolute;
+    right: 0.75em;
+    top: 50%;
+    margin-top: -5px;
+    width: 0px;
+    -webkit-transform: rotate(360deg); }
+  .radio-options li.checked label:before {
+    content: "";
+    border-style: solid;
+    border-width: 5px 0 5px 8.7px;
+    border-color: transparent transparent transparent #d6ebe0;
+    height: 0px;
+    position: absolute;
+    right: 0.75em;
+    top: 50%;
+    margin-top: -5px;
+    width: 0px;
+    -webkit-transform: rotate(360deg); }
+  .no-touch .radio-options:hover input:checked ~ label:before, .active .radio-options input:checked ~ label:before {
+    content: none; }
+  .no-touch .radio-options:hover li.checked label:before {
+    content: none; }
+
+.no-opacity .radio-options label {
+  visibility: hidden; }
+
+.no-opacity .radio-options:hover label {
+  visibility: visible; }
+
+.no-opacity .radio-options li.checked label {
+  visibility: visible; }
+
+.no-opacity input {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }

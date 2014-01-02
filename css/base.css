@@ -1,0 +1,74 @@
+/* General Demo Style */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+	font-family: 'fontawesome';
+	src:url('../fonts/fontawesome.eot');
+	src:url('../fonts/fontawesome.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/fontawesome.svg#fontawesome') format('svg'),
+		url('../fonts/fontawesome.woff') format('woff'),
+		url('../fonts/fontawesome.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body, html { font-size: 100%; 	padding: 0; margin: 0;}
+
+/* Reset */
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+body {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    color: #de0000; font-weight:lighter;}
+
+a { outline: none;
+	color: #f0f0f0;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+}
+
+h1,h2,h3,h4,h5,h6,h7,h8,h9 {margin:0; padding:0;}
+
+.warp {width:100%;}
+.whalf {width:50%;}
+.l {float:left;}
+.r {float:right;}
+.tl {text-align: left;}
+.tc {text-align: center;}
+.tr {text-align: right;}
+.p1 {padding:5px;}
+.p2 {padding-top:5px;}
+.p3 {padding-right:5px;}
+.p4 {padding-bottom:5px;}
+.p5 {padding-left:5px;}
+.p6 {padding:10px;}
+.p7 {padding-top:10px;}
+.p8 {padding-right:10px;}
+.p9 {padding-bottom:10px;}
+.p10 {padding-left:10px;}
+
+.container {width: 1600px; margin: 0 auto 20px auto; position:relative; top:0; height:auto; border:1px solid #d2d2d2; border-top: none;}
+.container header {width: 100%;margin: 0 auto; height:75px; width:100%;float:left; position:absolute; top:0;z-index:201;}
+
+.container > header .top { position:fixed; top:0;background: url(../images/tpl/bg/top.jpg) top repeat-x;border-bottom:1px solid #552b2b; width:1598px; height:75px;}
+.container > header .top .logo {width: 115px; padding: 8px 25px; float:left; height:73px;}  

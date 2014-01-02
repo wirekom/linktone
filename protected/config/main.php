@@ -22,7 +22,6 @@ return array(
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
-        'backend',
         'gii' => array(
             'generatorPaths' => array('bootstrap.gii'),
             'class' => 'system.gii.GiiModule',
@@ -33,12 +32,11 @@ return array(
     ),
     // application components
     'components' => array(
-        'metadata' => array('class' => 'WMetadata'),
         'bootstrap' => array(
             'class' => 'bootstrap.components.TbApi',
         ),
         'yiiwheels' => array(
-            'class' => 'yiiwheels.YiiWheels',
+            'class' => 'yiiwheels.YiiWheels',   
         ),
         'user' => array(
             // enable cookie-based authentication
@@ -62,10 +60,10 @@ return array(
          */
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'pgsql:host=localhost;dbname=linktone',
+            'connectionString' => 'pgsql:host=localhost;port=5432;dbname=linktone',
             'emulatePrepare' => true,
             'username' => 'postgres',
-            'password' => 'postgres',
+            'password' => 'hagemaru6414',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(
