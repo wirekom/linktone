@@ -115,7 +115,7 @@ class Role extends CActiveRecord {
 
     public static function checkAccess($operation) {
         if (Yii::app()->user->isGuest) {
-            $this->redirect(Yii::app()->createUrl('site/login'));
+            Yii::app()->controller->redirect(Yii::app()->createUrl('site/login'));
         } else {
             $user = User::model()->findByPk(Yii::app()->user->id);
             if (!in_array($operation, $user->operationsArray))
