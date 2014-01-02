@@ -506,7 +506,7 @@ CREATE TABLE "user" (
     surename character varying(45),
     lastname character varying(45),
     status character varying(45),
-    role_id integer NOT NULL,
+    role_id integer,
     products_id integer NOT NULL,
     address text,
     province character varying(255)
@@ -760,6 +760,72 @@ SELECT pg_catalog.setval('bills_user_id_seq', 1, true);
 --
 
 COPY operation (id, name) FROM stdin;
+117	accessLog.view
+118	accessLog.admin
+119	bills.view
+120	bills.create
+121	bills.update
+122	bills.delete
+123	bills.index
+124	bills.admin
+125	operation.create
+126	operation.update
+127	operation.delete
+128	operation.admin
+129	operation.generate
+130	paymentLog.view
+131	paymentLog.admin
+132	paymentMethods.view
+133	paymentMethods.create
+134	paymentMethods.update
+135	paymentMethods.delete
+136	paymentMethods.index
+137	paymentMethods.admin
+138	products.view
+139	products.create
+140	products.update
+141	products.delete
+142	products.index
+143	products.admin
+144	roleAccess.view
+145	roleAccess.create
+146	roleAccess.update
+147	roleAccess.delete
+148	roleAccess.index
+149	roleAccess.admin
+150	role.view
+151	role.create
+152	role.update
+153	role.delete
+154	role.ajaxRevoke
+155	role.index
+156	role.admin
+157	role.assign
+158	role.ajaxAssign
+159	site.index
+160	site.error
+161	site.login
+162	site.logout
+163	typeProduct.view
+164	typeProduct.create
+165	typeProduct.update
+166	typeProduct.delete
+167	typeProduct.index
+168	typeProduct.admin
+169	user.view
+170	user.create
+171	user.update
+172	user.delete
+173	user.index
+174	user.admin
+175	default.index
+176	backend.default.index
+177	backend.user.view
+178	backend.user.create
+179	backend.user.update
+180	backend.user.delete
+181	backend.user.index
+182	backend.user.admin
 \.
 
 
@@ -767,7 +833,7 @@ COPY operation (id, name) FROM stdin;
 -- Name: operation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('operation_id_seq', 1, false);
+SELECT pg_catalog.setval('operation_id_seq', 182, true);
 
 
 --
@@ -845,7 +911,9 @@ SELECT pg_catalog.setval('products_type_product_id_seq', 3, true);
 --
 
 COPY role (id, name) FROM stdin;
-2	role1
+4	guest
+2	Super Admin
+3	general-user
 \.
 
 
@@ -854,6 +922,86 @@ COPY role (id, name) FROM stdin;
 --
 
 COPY role_access (role_id, operation_id) FROM stdin;
+2	117
+2	118
+2	119
+2	120
+2	121
+2	122
+2	123
+2	124
+2	125
+2	126
+2	127
+2	128
+2	129
+2	130
+2	131
+2	132
+2	133
+2	134
+2	135
+2	136
+2	137
+2	138
+2	139
+2	140
+2	141
+2	142
+2	143
+2	144
+2	145
+2	146
+2	147
+2	148
+2	149
+2	150
+2	151
+2	152
+2	153
+2	154
+2	155
+2	156
+2	157
+2	158
+2	159
+2	160
+2	161
+2	162
+2	163
+2	164
+2	165
+2	166
+2	167
+2	168
+2	169
+2	170
+2	171
+2	172
+2	173
+2	174
+2	175
+2	176
+2	177
+2	178
+2	179
+2	180
+2	181
+2	182
+3	119
+3	120
+3	123
+3	130
+3	131
+3	136
+3	138
+3	142
+3	163
+3	167
+3	169
+3	170
+3	171
+3	173
 \.
 
 
@@ -875,7 +1023,7 @@ SELECT pg_catalog.setval('role_access_role_id_seq', 1, false);
 -- Name: role_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('role_id_seq', 2, true);
+SELECT pg_catalog.setval('role_id_seq', 4, true);
 
 
 --
@@ -901,7 +1049,7 @@ SELECT pg_catalog.setval('type_product_id_seq', 2, true);
 
 COPY "user" (id, username, password, email, birthdate, surename, lastname, status, role_id, products_id, address, province) FROM stdin;
 17	admin	d033e22ae348aeb5660fc2140aec35850c4da997	admin@gmail.com	2013-12-27	Administrator	System	1	2	2	\N	\N
-18	widodo	f34fd37bff076dba7b27785668a1369221118ca7	widodo@gmail.com	1988-06-28	Widodo	Pangestu	22	2	1	\N	\N
+18	widodo	f34fd37bff076dba7b27785668a1369221118ca7	widodo@gmail.com	1988-06-28	Widodo	Pangestu	22	3	1	\N	\N
 \.
 
 
