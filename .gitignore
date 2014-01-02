@@ -5,4 +5,7 @@
 /index-test.php
 /uploads/
 /protected/config/
+/.settings/
+/.buildpath
+
 *~
