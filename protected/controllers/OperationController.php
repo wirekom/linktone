@@ -133,7 +133,7 @@ class OperationController extends Controller {
                 $status = FALSE;
                 if (!Operation::model()->exists('name = :name', array(":name" => $operation->name)))
                     $status = $operation->save(FALSE);
-                echo 'Generated ' . $controller['name'] . '.' . $action . ($status ? ' Success' : ' Failed') . PHP_EOL;
+                echo 'Generated ' . $operation->name . ($status ? ' Success' : ' Failed') . PHP_EOL;
             }
 
 
@@ -142,11 +142,11 @@ class OperationController extends Controller {
             foreach ($modul['controllers'] as $controller)
                 foreach ($controller['actions'] as $action) {
                     $operation = new Operation;
-                    $operation->name = $controller['name'] . '.' . $action;
+                    $operation->name = $modul['name'] . '.' . $controller['name'] . '.' . $action;
                     $status = FALSE;
                     if (!Operation::model()->exists('name = :name', array(":name" => $operation->name)))
                         $status = $operation->save(FALSE);
-                    echo 'Generated ' . $modul['name'] . '.' . $controller['name'] . '.' . $action . ($status ? ' Success' : ' Failed') . PHP_EOL;
+                    echo 'Generated ' . $operation->name . ($status ? ' Success' : ' Failed') . PHP_EOL;
                 }
 
         echo '</pre>';

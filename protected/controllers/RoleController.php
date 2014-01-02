@@ -81,11 +81,13 @@ class RoleController extends Controller {
                 ));
 
                 $valid = TRUE;
-                foreach ($model->operations as $val) {
-                    $roleAccess = new RoleAccess;
-                    $roleAccess->role_id = $model->id;
-                    $roleAccess->operation_id = $val;
-                    $valid = $roleAccess->save() && $valid;
+                if (is_array($model->operations)) {
+                    foreach ($model->operations as $val) {
+                        $roleAccess = new RoleAccess;
+                        $roleAccess->role_id = $model->id;
+                        $roleAccess->operation_id = $val;
+                        $valid = $roleAccess->save() && $valid;
+                    }
                 }
                 if ($valid)
                     $this->redirect(array('view', 'id' => $model->id));
@@ -116,7 +118,7 @@ class RoleController extends Controller {
         }
     }
 
-    public function actionRevoke($id) {
+    public function actionAjaxRevoke($id) {
         if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
             $user = User::model()->findByPk($id);
@@ -183,6 +185,37 @@ class RoleController extends Controller {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    public function actionAssign($id) {
+        $model = $this->loadModel($id);
+        $dataProvider = new CActiveDataProvider('User', array(
+            'criteria' => array(
+                'condition' => 'role_id IS NULL',
+        )));
+
+        $this->render('assign', array(
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+        ));
+    }
+
+    public function actionAjaxAssign($role_id, $user_id) {
+        if (Yii::app()->request->isPostRequest) {
+            // we only allow deletion via POST request
+            $user = User::model()->findByPk($user_id);
+            if ($user === null)
+                throw new CHttpException(404, 'The requested page does not exist.');
+            $user->role_id = $role_id;
+            $user->save(FALSE);
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax'])) {
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('view', 'id' => $role_id));
+            }
+        } else {
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+        }
+//        echo $role_id . ' ' . $user_id;
     }
 
 }

@@ -14,6 +14,7 @@ $this->menu = array(
     array('label' => 'Create', 'url' => array('create'), 'icon' => 'file'),
     array('label' => 'Update', 'url' => array('update', 'id' => $model->id), 'icon' => 'pencil'),
     array('label' => 'Delete', 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?'), 'icon' => 'trash'),
+    array('label' => 'Assign User', 'url' => array('assign', 'id' => $model->id), 'icon' => 'check'),
 );
 ?>
 

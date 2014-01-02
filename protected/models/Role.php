@@ -103,7 +103,6 @@ class Role extends CActiveRecord {
         return $data;
     }
 
-
     public function getOperationsValue() {
         $content = array();
         foreach ($this->operations as $operation) {
@@ -113,4 +112,20 @@ class Role extends CActiveRecord {
         }
         return $content;
     }
+
+    public static function checkAccess($operation) {
+        if (Yii::app()->user->isGuest) {
+            $this->redirect(Yii::app()->createUrl('site/login'));
+        } else {
+            $user = User::model()->findByPk(Yii::app()->user->id);
+            if (!in_array($operation, $user->operationsArray))
+                throw new CHttpException(403, "Damn You!, you are not authorized to perform this action.");
+        }
+    }
+
+    public static function getOperationName() {
+        $module = (Yii::app()->controller->module !== NULL) ? Yii::app()->controller->module->id . '.' : '';
+        return $module .= Yii::app()->controller->id . '.' . Yii::app()->controller->action->id;
+    }
+
 }

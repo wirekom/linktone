@@ -25,10 +25,7 @@ class Controller extends CController {
     public $breadcrumbs = array();
 
     public function filterWAuth($filterChain) {
-        echo '<pre>';
-        echo Yii::app()->controller->id;
-        echo Yii::app()->controller->action->id;
-        echo '</pre>';
+        Role::checkAccess(Role::getOperationName());
         $filterChain->run();
     }
 

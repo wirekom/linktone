@@ -48,7 +48,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
                 'revoke' => array(
                     'label' => 'Revoke', //Text label of the button.
                     'options' => array('class' => 'revoke'),
-                    'url' => 'Yii::app()->createUrl("role/revoke", array("id"=>$data->id))',
+                    'url' => 'Yii::app()->createUrl("role/ajaxRevoke", array("id"=>$data->id))',
                     'visible' => 'true', //A PHP expression for determining whether the button is visible.
                 ),
             ),
