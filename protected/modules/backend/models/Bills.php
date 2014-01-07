@@ -1,6 +1,6 @@
 <?php
 
-/**
+/**erer
  * This is the model class for table "bills".
  *
  * The followings are the available columns in table 'bills':
