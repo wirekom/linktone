@@ -29,6 +29,12 @@ class SiteController extends Controller {
         // using the default layout 'protected/views/layouts/main.php'
         $this->render('index');
     }
+	
+    public function actionDetail() {
+        // renders the view file 'protected/views/site/detail.php'
+        // using the default layout 'protected/views/layouts/main.php'
+        $this->render('detail');
+    }
 
     /**
      * This is the action to handle external exceptions.

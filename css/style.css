@@ -15,9 +15,9 @@
 	margin-right: 10px;
 }
 
-ul.grid {padding:0 !important; margin:0 0 0 55px;}
-.grid {max-width:1598px;margin: 0 auto;list-style: none;text-align: center;z-index:9;font-weight:lighter;}
-.grid li {display: block;width: 215px;margin: 0;padding: 10px 5px; float:left;text-align: center;position: relative;}
+.grid {margin: 0 auto;list-style: none;text-align: center;z-index:9;font-weight:lighter;}
+ul.grid {padding:0 !important; margin:0; padding:0;}
+.grid li {display: block;width: 209px;margin: 0;padding: 10px 5px; float:left;text-align: center;position: relative;}
 .grid figure {margin: 0;position: relative;}
 .grid figure img {max-width: 100%;display: block;position: relative;}
 .grid figcaption {position: absolute;top: 0;left: 0;padding: 10px;background: #de0000;color: #e7d9d9;font-size:13px;}
