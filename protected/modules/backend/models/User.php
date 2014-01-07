@@ -39,9 +39,9 @@ class User extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('username, birthdate, email, role_id, products_id', 'required'),            
-            array('password, repeatpassword', 'required', 'on'=>'insert'),
-            array('repeatpassword', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match"),
+            array('username, birthdate, email, role_id, products_id', 'required'),
+            array('password, repeatpassword', 'required', 'on' => 'insert'),
+            array('repeatpassword', 'compare', 'compareAttribute' => 'password', 'message' => "Passwords don't match"),
             array('username, password, repeatpassword, email', 'length', 'max' => 255),
             array('surename, lastname, status', 'length', 'max' => 45),
             array('birthdate', 'safe'),
@@ -136,4 +136,40 @@ class User extends CActiveRecord {
         return CHtml::listData(Products::model()->findAll(), 'id', 'name');
     }
 
+    public function beforeSave() {
+        if ($this->isNewRecord) {
+            $this->password = sha1($this->password);
+        } else {
+            $user = User::model()->findByPk($this->id);
+            if ($user->password != $this->password) {
+                $this->password = sha1($this->password);
+            }
+        }
+        return true;
+    }
+
+    public function getOperationsArray() {
+        $data = array();
+        if (is_object($this->role))
+            foreach ($this->role->operations as $operation)
+                array_push($data, $operation->name);
+        return $data;
+    }
+
+    /**
+     * Checks if the given password is correct.
+     * @param string the password to be validated
+     * @return boolean whether the password is valid
+     */
+    public function validatePassword($password) {
+        return sha1($password) === $this->password;
+    }
+
+    public function getRoleName() {
+        return ($this->role !== NULL) ? $this->role->name : 'Not Set';
+    }
+
+    public function getRoleNameLink() {
+        return ($this->role !== NULL) ? CHtml::link(CHtml::encode($model->role->name), array('backend/role/view', 'id' => $model->role_id)) : 'Not Set';
+    }
 }

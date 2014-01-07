@@ -67,8 +67,8 @@ h1,h2,h3,h4,h5,h6,h7,h8,h9 {margin:0; padding:0;}
 .p9 {padding-bottom:10px;}
 .p10 {padding-left:10px;}
 
-.container {width: 1600px; margin: 0 auto 20px auto; position:relative; top:0; height:auto; border:1px solid #d2d2d2; border-top: none;}
+.container {width: 100%; margin: 0 auto 20px auto; position:relative; top:0; height:auto; border:1px solid #d2d2d2; border-top: none;}
 .container header {width: 100%;margin: 0 auto; height:75px; width:100%;float:left; position:absolute; top:0;z-index:201;}
 
-.container > header .top { position:fixed; top:0;background: url(../images/tpl/bg/top.jpg) top repeat-x;border-bottom:1px solid #552b2b; width:1598px; height:75px;}
+.container > header .top { position:fixed; top:0;background: url(../images/tpl/bg/top.jpg) top repeat-x;border-bottom:1px solid #552b2b; width:100%; height:75px;}
 .container > header .top .logo {width: 115px; padding: 8px 25px; float:left; height:73px;}  

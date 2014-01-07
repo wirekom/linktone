@@ -1,12 +1,12 @@
 <?php
-/* @var $this UserController */
-/* @var $model User */
+/* @var $this ProductsController */
+/* @var $model Products */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Users' => array('index'),
-    $model->username,
+    'Products' => array('index'),
+    $model->name,
 );
 
 $this->menu = array(
@@ -18,7 +18,7 @@ $this->menu = array(
 );
 ?>
 
-<h1>View User #<?php echo $model->username; ?></h1>
+<h1>View Products <?php echo $model->name; ?></h1>
 
 <?php
 $this->widget('zii.widgets.CDetailView', array(
@@ -27,22 +27,19 @@ $this->widget('zii.widgets.CDetailView', array(
     ),
     'data' => $model,
     'attributes' => array(
-        'username',
-        'email',
-        'birthdate',
-        'surename',
-        'lastname',
-        'status',
         array(
-            'name' => 'role_id',
+            'name' => 'type_product',
             'type' => 'raw',
-            'value' => $model->roleName,
+            'value' => CHtml::encode($model->typeText),
         ),
         array(
-            'name' => 'products_id',
+            'name' => 'parent_id',
             'type' => 'raw',
-            'value' => CHtml::link(CHtml::encode($model->products->name), array('backend/products/view', 'id' => $model->products_id)),
+            'value' => CHtml::encode($model->parentName),
         ),
+        'name',
+        'zte_product_code',
+        'price',
     ),
 ));
 ?>

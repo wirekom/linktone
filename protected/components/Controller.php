@@ -25,7 +25,7 @@ class Controller extends CController {
     public $breadcrumbs = array();
 
     public function filterWAuth($filterChain) {
-        Role::checkAccess(Role::getOperationName());
+//        Role::checkAccess(Role::getOperationName());
         $filterChain->run();
     }
 
