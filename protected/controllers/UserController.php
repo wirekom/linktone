@@ -44,20 +44,24 @@ class UserController extends Controller {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionRegister() {
-        $model = new User;
+    public function actionRegistration() {
+        $model = new User('userRegistration');
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
+            $model->status = User::STATUS_ACTIVE;
+            $model->role_id = 3;
             if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
+                User::sendMail($model->email, "You registered from " . Yii::app()->name, "Please Pay your Bill!!!!");
+                Yii::app()->user->setFlash('registration', "Thank you for your registration. Please check your email.");
+                $this->refresh();
             }
         }
 
-        $this->render('create', array(
+        $this->render('registration', array(
             'model' => $model,
         ));
     }
@@ -68,9 +72,11 @@ class UserController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionChangePassword() {
+        
     }
-    
+
     public function actionFindPassword() {
+        
     }
 
     /**
