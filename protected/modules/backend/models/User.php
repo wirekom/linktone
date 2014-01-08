@@ -23,12 +23,7 @@
  */
 class User extends CActiveRecord {
 
-    const STATUS_NOACTIVE = 0;
-    const STATUS_ACTIVE = 1;
-    const STATUS_BANNED = -1;
-
     public $repeatpassword;
-    public $verifyCode;
 
     /**
      * @return string the associated database table name
@@ -51,10 +46,6 @@ class User extends CActiveRecord {
             array('surename, lastname, status', 'length', 'max' => 45),
             array('birthdate', 'safe'),
             array('email', 'email'),
-            array('username', 'unique', 'message' => "This user's name already exists."),
-            array('email', 'unique', 'message' => "This user's email address already exists."),
-            array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => "Incorrect symbols (A-z0-9)."),
-            array('verifyCode', 'captcha', 'on' => 'userRegistration'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, username, password, email, birthdate, surename, lastname, status, role_id, products_id', 'safe', 'on' => 'search'),
@@ -157,26 +148,6 @@ class User extends CActiveRecord {
         return true;
     }
 
-    public function getStatusOptions() {
-        return array(
-            self::STATUS_ACTIVE => 'Active',
-            self::STATUS_NOACTIVE => 'Not Active',
-            self::STATUS_BANNED => 'Banned',
-        );
-    }
-
-    public function getStatusText($status = null) {
-        $value = ($status === null) ? $this->status : $status;
-        $statusOptions = $this->getStatusOptions();
-        return isset($statusOptions[$value]) ?
-                $statusOptions[$value] : "unknown status ({$value})";
-    }
-
-    public function getStatusValue($status = null) {
-        $statusOptions = $this->getStatusOptions();
-        return array_search($status, $statusOptions);
-    }
-
     public function getOperationsArray() {
         $data = array();
         if (is_object($this->role))
@@ -201,16 +172,4 @@ class User extends CActiveRecord {
     public function getRoleNameLink() {
         return ($this->role !== NULL) ? CHtml::link(CHtml::encode($model->role->name), array('backend/role/view', 'id' => $model->role_id)) : 'Not Set';
     }
-
-    /**
-     * Send mail method
-     */
-    public static function sendMail($email, $subject, $message) {
-        $adminEmail = Yii::app()->params['adminEmail'];
-        $headers = "MIME-Version: 1.0\r\nFrom: $adminEmail\r\nReply-To: $adminEmail\r\nContent-Type: text/html; charset=utf-8";
-        $message = wordwrap($message, 70);
-        $message = str_replace("\n.", "\n..", $message);
-        return mail($email, '=?UTF-8?B?' . base64_encode($subject) . '?=', $message, $headers);
-    }
-
 }

@@ -25,6 +25,7 @@ nav ul.menu li:hover > ul li a:hover {background:#FFF; color:#ffc200; display:bl
     position: relative;
     text-transform: uppercase;
 }
+
 .breadcrumbs a{
 	color:#DE0000;
 	text-decoration:none;
@@ -49,6 +50,7 @@ nav ul.menu li:hover > ul li a:hover {background:#FFF; color:#ffc200; display:bl
 .user ul li:hover > ul li a:hover {background:#FFF; color:#ffc200; padding:10px;}
 
 /* CONTENT */
+
 .section {background:#F1F1F1; float:left; width:1349px; padding:0; border:1px solid #D2D2D2; margin:0;}
 .bc {
     background-color: #FFFFFF;
