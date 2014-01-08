@@ -1,12 +1,12 @@
 <?php
-/* @var $this UserController */
-/* @var $model User */
+/* @var $this BillsController */
+/* @var $model Bills */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Users' => array('index'),
-    $model->username,
+    'Bills' => array('index'),
+    $model->id,
 );
 
 $this->menu = array(
@@ -18,7 +18,7 @@ $this->menu = array(
 );
 ?>
 
-<h1>View User #<?php echo $model->username; ?></h1>
+<h1>View Bills #<?php echo $model->invoice_no; ?></h1>
 
 <?php
 $this->widget('zii.widgets.CDetailView', array(
@@ -27,22 +27,21 @@ $this->widget('zii.widgets.CDetailView', array(
     ),
     'data' => $model,
     'attributes' => array(
-        'username',
-        'email',
-        'birthdate',
-        'surename',
-        'lastname',
-        'status',
         array(
-            'name' => 'role_id',
+            'name' => 'user_id',
             'type' => 'raw',
-            'value' => $model->roleName,
+            'value' => CHtml::link(CHtml::encode($model->user->username), array('user/view', 'id' => $model->user_id)),
         ),
         array(
-            'name' => 'products_id',
+            'name' => 'payment_methods_id',
             'type' => 'raw',
-            'value' => CHtml::link(CHtml::encode($model->products->name), array('backend/products/view', 'id' => $model->products_id)),
+            'value' => CHtml::link(CHtml::encode($model->paymentMethods->payment_name), array('paymentMethods/view', 'id' => $model->payment_methods_id)),
         ),
+        'invoice_no',
+        'amount',
+        'date_produced',
+        'due_date',
+        'payment_time',
     ),
 ));
 ?>

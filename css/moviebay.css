@@ -37,9 +37,9 @@ nav ul li:hover > ul li a:hover {background:#FFF; color:#ffc200; display:block;}
 	
 /* CONTENT */
 section {background:#F1F1F1; float:left; width:100%; padding:70px 0 0 0; border:1px solid #D2D2D2; margin:0;}
-	section .bc {width:1596px; border-bottom:1px solid #D2D2D2; background-color:#FFF; padding:20px 20px 10px 20px;}
+	section .bc {width:100%; border-bottom:1px solid #D2D2D2; background-color:#FFF; padding:20px 20px 10px 20px;}
 	section h1 {background:url(../images/tpl/bg/heading.png) top left no-repeat; margin:20px 0 0 20px; padding:10px 0 25px 35px; font-family:'comfortaa', helvetica, arial, verdana; color:#999;text-transform:uppercase;font-weight:lighter;text-shadow:1px 1px 1px #FFF; letter-spacing:1px;font-size:18px;}
-	section .footer {background:#FFF; border-top:1px solid #D0D0D0; border-bottom:1px solid #D0D0D0; padding:15px 0; float:left; height:50px; width:1596px; margin:50px 0 0 0;}
+	section .footer {background:#FFF; border-top:1px solid #D0D0D0; border-bottom:1px solid #D0D0D0; padding:15px 0; float:left; height:50px; width:100%; margin:50px 0 0 0;}
 	section .footer ul, section .footer ul.term {width:50%; float:left;margin:0; padding:0;}
 	section .footer ul li, section .footer ul.term li {display:inline-block; list-style:none;}
 	section .footer ul li a, section .footer ul.term li {color: #999; padding: 5px 10px; margin:0 5px;font-size:13px; font-weight:lighter;}

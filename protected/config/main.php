@@ -19,9 +19,12 @@ return array(
         'bootstrap.helpers.TbHtml',
         'application.models.*',
         'application.components.*',
+        'application.modules.backend.models.*',
+        'application.modules.backend.components.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
+        'backend',
         'gii' => array(
             'generatorPaths' => array('bootstrap.gii'),
             'class' => 'system.gii.GiiModule',
@@ -32,11 +35,12 @@ return array(
     ),
     // application components
     'components' => array(
+        'metadata' => array('class' => 'WMetadata'),
         'bootstrap' => array(
             'class' => 'bootstrap.components.TbApi',
         ),
         'yiiwheels' => array(
-            'class' => 'yiiwheels.YiiWheels',   
+            'class' => 'yiiwheels.YiiWheels',
         ),
         'user' => array(
             // enable cookie-based authentication
@@ -63,7 +67,7 @@ return array(
             'connectionString' => 'pgsql:host=localhost;port=5432;dbname=linktone',
             'emulatePrepare' => true,
             'username' => 'postgres',
-            'password' => 'hagemaru6414',
+            'password' => 'postgres',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(

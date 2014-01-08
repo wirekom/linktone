@@ -1,32 +1,20 @@
 <?php
 
-class UserController extends Controller {
+class TypeProductController extends Controller {
 
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
-    public $layout = '//layouts/column2';
+    public $layout = '/layouts/column2';
+    public $defaultAction = 'admin';
 
     /**
      * @return array action filters
      */
     public function filters() {
         return array(
-            'WAuth',
-        );
-    }
-
-    /**
-     * Declares class-based actions.
-     */
-    public function actions() {
-        return array(
-            // captcha action renders the CAPTCHA image displayed on the contact page
-            'captcha' => array(
-                'class' => 'CCaptchaAction',
-                'backColor' => 0xFFFFFF,
-            ),
+            'WAuth', 
         );
     }
 
@@ -34,9 +22,9 @@ class UserController extends Controller {
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionProfile() {
-        $this->render('profile', array(
-            'model' => $this->loadModel(Yii::app()->user->id),
+    public function actionView($id) {
+        $this->render('view', array(
+            'model' => $this->loadModel($id),
         ));
     }
 
@@ -44,14 +32,14 @@ class UserController extends Controller {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionRegister() {
-        $model = new User;
+    public function actionCreate() {
+        $model = new TypeProduct;
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['User'])) {
-            $model->attributes = $_POST['User'];
+        if (isset($_POST['TypeProduct'])) {
+            $model->attributes = $_POST['TypeProduct'];
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->id));
             }
@@ -67,10 +55,22 @@ class UserController extends Controller {
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionChangePassword() {
-    }
-    
-    public function actionFindPassword() {
+    public function actionUpdate($id) {
+        $model = $this->loadModel($id);
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+
+        if (isset($_POST['TypeProduct'])) {
+            $model->attributes = $_POST['TypeProduct'];
+            if ($model->save()) {
+                $this->redirect(array('view', 'id' => $model->id));
+            }
+        }
+
+        $this->render('update', array(
+            'model' => $model,
+        ));
     }
 
     /**
@@ -96,7 +96,7 @@ class UserController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('User');
+        $dataProvider = new CActiveDataProvider('TypeProduct');
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
@@ -106,10 +106,10 @@ class UserController extends Controller {
      * Manages all models.
      */
     public function actionAdmin() {
-        $model = new User('search');
+        $model = new TypeProduct('search');
         $model->unsetAttributes();  // clear any default values
-        if (isset($_GET['User'])) {
-            $model->attributes = $_GET['User'];
+        if (isset($_GET['TypeProduct'])) {
+            $model->attributes = $_GET['TypeProduct'];
         }
 
         $this->render('admin', array(
@@ -121,11 +121,11 @@ class UserController extends Controller {
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer $id the ID of the model to be loaded
-     * @return User the loaded model
+     * @return TypeProduct the loaded model
      * @throws CHttpException
      */
     public function loadModel($id) {
-        $model = User::model()->findByPk($id);
+        $model = TypeProduct::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
         }
@@ -134,10 +134,10 @@ class UserController extends Controller {
 
     /**
      * Performs the AJAX validation.
-     * @param User $model the model to be validated
+     * @param TypeProduct $model the model to be validated
      */
     protected function performAjaxValidation($model) {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'type-product-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }

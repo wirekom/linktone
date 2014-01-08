@@ -1,24 +1,24 @@
 <?php
-/* @var $this UserController */
-/* @var $model User */
+/* @var $this RoleController */
+/* @var $model Role */
 ?>
 
 <?php
 $this->breadcrumbs = array(
-    'Users' => array('index'),
-    $model->username,
+    'Roles' => array('admin'),
+    $model->name,
 );
 
 $this->menu = array(
     array('label' => 'Manage', 'url' => array('admin'), 'icon' => 'list-alt'),
-    array('label' => 'List', 'url' => array('index'), 'icon' => 'list'),
     array('label' => 'Create', 'url' => array('create'), 'icon' => 'file'),
     array('label' => 'Update', 'url' => array('update', 'id' => $model->id), 'icon' => 'pencil'),
     array('label' => 'Delete', 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?'), 'icon' => 'trash'),
+    array('label' => 'Assign User', 'url' => array('assign', 'id' => $model->id), 'icon' => 'check'),
 );
 ?>
 
-<h1>View User #<?php echo $model->username; ?></h1>
+<h1>View Role #<?php echo $model->name; ?></h1>
 
 <?php
 $this->widget('zii.widgets.CDetailView', array(
@@ -27,22 +27,19 @@ $this->widget('zii.widgets.CDetailView', array(
     ),
     'data' => $model,
     'attributes' => array(
-        'username',
-        'email',
-        'birthdate',
-        'surename',
-        'lastname',
-        'status',
+        'name',
         array(
-            'name' => 'role_id',
-            'type' => 'raw',
-            'value' => $model->roleName,
-        ),
-        array(
-            'name' => 'products_id',
-            'type' => 'raw',
-            'value' => CHtml::link(CHtml::encode($model->products->name), array('backend/products/view', 'id' => $model->products_id)),
+            'name' => 'operations',
+            'type' => 'html',
+            'value' => $model->operationsFormat,
         ),
     ),
 ));
 ?>
+<div id="users">
+    <?php
+    $this->renderPartial('_users', array(
+        'users' => $model->users,
+    ));
+    ?>
+</div>
