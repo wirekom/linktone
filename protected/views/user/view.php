@@ -36,12 +36,12 @@ $this->widget('zii.widgets.CDetailView', array(
         array(
             'name' => 'role_id',
             'type' => 'raw',
-            'value' => CHtml::link(CHtml::encode($model->role->name), array('role/view', 'id' => $model->role_id)),
+            'value' => $model->roleName,
         ),
         array(
             'name' => 'products_id',
             'type' => 'raw',
-            'value' => CHtml::link(CHtml::encode($model->products->name), array('products/view', 'id' => $model->products_id)),
+            'value' => CHtml::link(CHtml::encode($model->products->name), array('backend/products/view', 'id' => $model->products_id)),
         ),
     ),
 ));

@@ -23,7 +23,7 @@
 
     <?php echo $form->textFieldControlGroup($model, 'username', array('span' => 5, 'maxlength' => 255)); ?>
 
-    <?php echo $form->passwordFieldControlGroup($model, 'password', array('span' => 5, 'maxlength' => 255)); ?>
+    <?php echo $form->passwordFieldControlGroup($model, 'password', array('span' => 5, 'maxlength' => 255, 'autocomplete' => 'off')); ?>
 
     <?php echo $form->passwordFieldControlGroup($model, 'repeatpassword', array('span' => 5, 'maxlength' => 255)); ?>
 
@@ -35,7 +35,7 @@
 
     <?php echo $form->textFieldControlGroup($model, 'lastname', array('span' => 5, 'maxlength' => 45)); ?>
 
-    <?php echo $form->textFieldControlGroup($model, 'status', array('span' => 5, 'maxlength' => 45)); ?>
+    <?php echo $form->dropDownListControlGroup($model, 'status', $model->statusOptions, array('span' => 5)); ?>
 
     <?php echo $form->dropDownListControlGroup($model, 'role_id', $model->roleOptions, array('span' => 5)); ?>
 
