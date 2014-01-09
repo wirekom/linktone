@@ -32,17 +32,18 @@ $this->breadcrumbs = array(
 
             <?php echo $form->textFieldControlGroup($model, 'username', array('span' => 5, 'maxlength' => 255, 'placeholder' => 'Username')); ?>
 
-            <?php echo $form->passwordFieldControlGroup($model, 'password', array('span' => 5, 'maxlength' => 255,'placeholder' => 'Password')); ?>
+            <?php echo $form->passwordFieldControlGroup($model, 'password', array('span' => 5, 'maxlength' => 255, 'placeholder' => 'Password')); ?>
 
             <?php echo $form->checkBoxControlGroup($model, 'rememberMe', array('span' => 5)); ?>
             <br />
+            <?php echo TbHtml::link('Registration', array('/user/registration')) . ' | ' . TbHtml::link('Forgot Password', array('/user/recovery')) ?>
             <div class="control-group">
                 <?php
                 echo TbHtml::submitButton('Login', array(
                     'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                     'size' => TbHtml::BUTTON_SIZE_LARGE,
                 ));
-                echo   TbHtml::resetButton('Reset');
+                echo TbHtml::resetButton('Reset');
                 echo TbHtml::button('Home');
                 ?>
             </div>

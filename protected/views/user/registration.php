@@ -26,6 +26,8 @@
 
         <?php echo $form->errorSummary($model); ?>
 
+        <?php echo $form->dropDownListControlGroup($model, 'products_id', $model->productsOptions, array('span' => 5)); ?>
+
         <?php echo $form->textFieldControlGroup($model, 'username', array('span' => 5, 'maxlength' => 255)); ?>
 
         <?php echo $form->passwordFieldControlGroup($model, 'password', array('span' => 5, 'maxlength' => 255, 'autocomplete' => 'off')); ?>
@@ -40,7 +42,13 @@
 
         <?php echo $form->textFieldControlGroup($model, 'lastname', array('span' => 5, 'maxlength' => 45)); ?>
 
-        <?php echo $form->dropDownListControlGroup($model, 'products_id', $model->productsOptions, array('span' => 5)); ?>
+        <?php echo $form->textAreaControlGroup($model, 'address', array('span' => 5, 'maxlength' => 45)); ?>
+
+        <?php echo $form->textFieldControlGroup($model, 'city', array('span' => 5, 'maxlength' => 45)); ?>
+
+        <?php echo $form->textFieldControlGroup($model, 'province', array('span' => 5, 'maxlength' => 45)); ?>
+
+        <?php echo $form->textFieldControlGroup($model, 'country', array('span' => 5, 'maxlength' => 45)); ?>
 
         <?php $this->widget('CCaptcha'); ?>
         <?php echo $form->textFieldControlGroup($model, 'verifyCode'); ?>
