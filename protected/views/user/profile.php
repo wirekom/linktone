@@ -28,15 +28,10 @@ $this->widget('zii.widgets.CDetailView', array(
             'value' => CHtml::link(CHtml::encode($model->products->name), array('backend/products/view', 'id' => $model->products_id)),
         ),
         'username',
-        'email',
-        'birthdate',
         'surename',
         'lastname',
-        array(
-            'name' => 'status',
-            'type' => 'raw',
-            'value' => $model->statusText,
-        ),
+        'email',
+        'birthdate',
     ),
 ));
 ?>

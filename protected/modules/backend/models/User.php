@@ -39,13 +39,17 @@ class User extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('username, birthdate, email, role_id, products_id', 'required'),
+            array('username, birthdate, email', 'required'),
             array('password, repeatpassword', 'required', 'on' => 'insert'),
             array('repeatpassword', 'compare', 'compareAttribute' => 'password', 'message' => "Passwords don't match"),
             array('username, password, repeatpassword, email', 'length', 'max' => 255),
             array('surename, lastname, status', 'length', 'max' => 45),
-            array('birthdate', 'safe'),
             array('email', 'email'),
+//            array('role_id, products_id', 'integerOnly' => true),
+            array('username', 'unique', 'message' => "This user's name already exists."),
+            array('email', 'unique', 'message' => "This user's email address already exists."),
+            array('username', 'match', 'pattern' => '/^[A-Za-z0-9_]+$/u', 'message' => "Incorrect symbols (A-z0-9)."),
+            array('verifyCode', 'captcha', 'on' => 'registration'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, username, password, email, birthdate, surename, lastname, status, role_id, products_id', 'safe', 'on' => 'search'),

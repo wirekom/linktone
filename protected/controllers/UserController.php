@@ -7,6 +7,7 @@ class UserController extends Controller {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
+    private $_model;
 
     /**
      * @return array action filters
@@ -36,7 +37,7 @@ class UserController extends Controller {
      */
     public function actionProfile() {
         $this->render('profile', array(
-            'model' => $this->loadModel(Yii::app()->user->id),
+            'model' => $this->loadUser(),
         ));
     }
 
@@ -44,8 +45,8 @@ class UserController extends Controller {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionRegister() {
-        $model = new User;
+    public function actionRegistration() {
+        $model = new User('registration');
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
@@ -62,15 +63,45 @@ class UserController extends Controller {
         ));
     }
 
+    public function actionEdit() {
+        $model = $this->loadUser();
+        $model->password = "";
+        if (isset($_POST['User'])) {
+            $model->attributes = $_POST['User'];
+            if ($model->save()) {
+                Yii::app()->user->setFlash('profileMessage', "Changes is saved.");
+                $this->redirect(array('/user/profile'));
+            }
+        }
+
+        $this->render('edit', array(
+            'model' => $model,
+        ));
+    }
+
     /**
-     * Updates a particular model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id the ID of the model to be updated
+     * Change password
      */
     public function actionChangePassword() {
+        if (Yii::app()->user->id) {
+            $model = new UserChangePassword;
+            if (isset($_POST['UserChangePassword'])) {
+                $model->attributes = $_POST['UserChangePassword'];
+                if ($model->validate()) {
+                    $new_password = User::model()->findbyPk(Yii::app()->user->id);
+                    $new_password->password = $model->password;
+                    $new_password->save();
+                    Yii::app()->user->setFlash('profileMessage', "New password is saved.");
+                    $this->redirect(array("profile"));
+                }
+            }
+            $this->render('changepassword', array('model' => $model));
+        } else
+            $this->redirect(Yii::app()->createUrl('site/login'));
     }
-    
+
     public function actionFindPassword() {
+        
     }
 
     /**
@@ -141,6 +172,21 @@ class UserController extends Controller {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer the primary key value. Defaults to null, meaning using the 'id' GET variable
+     */
+    public function loadUser() {
+        if ($this->_model === null) {
+            if (Yii::app()->user->id)
+                $this->_model = User::model()->findByPk(Yii::app()->user->id);
+            if ($this->_model === null)
+                $this->redirect(Yii::app()->createUrl('site/login'));
+        }
+        return $this->_model;
     }
 
 }
