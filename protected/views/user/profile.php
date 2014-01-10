@@ -32,6 +32,10 @@ $this->widget('zii.widgets.CDetailView', array(
         'lastname',
         'email',
         'birthdate',
+        'address',
+        'country',
+        'province',
+        'city',
     ),
 ));
 ?>

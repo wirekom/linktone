@@ -6,10 +6,12 @@ $this->breadcrumbs = array(
 );
 $this->menu = array(
     array('label' => 'Profile', 'url' => array('/user/profile')),
-    array('label' => 'Change Password', 'url' => array('changePassword')),
+    array('label' => 'Change Password', 'url' => array('user/changePassword')),
     array('label' => 'Logout', 'url' => array('/user/logout')),
 );
-?><h1><?php echo 'Edit profile'; ?></h1>
+?>
+
+<h1><?php echo 'Edit profile'; ?></h1>
 
 <?php if (Yii::app()->user->hasFlash('profileMessage')): ?>
     <div class="success">

@@ -7,6 +7,7 @@ class UserController extends Controller {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
+    public $defaultAction = 'profile';
     private $_model;
 
     /**
@@ -49,7 +50,7 @@ class UserController extends Controller {
         if (Yii::app()->user->id)
             $this->redirect(array('/user/profile'));
 
-        $model = new RegistrationForm;
+        $model = new UserRegistrationForm;
         if (isset($_POST['UserRegistrationForm'])) {
             $model->attributes = $_POST['UserRegistrationForm'];
             $model->activkey = sha1(microtime() . $model->password);
@@ -89,16 +90,13 @@ class UserController extends Controller {
     }
 
     public function actionEdit() {
-//        if (!Yii::app()->user->id)
-//            $this->redirect(array('/site/login'));
+        if (!Yii::app()->user->id)
+            $this->redirect(array('/site/login'));
 
         $model = UserProfileForm::model()->findByPk(Yii::app()->user->id);
-        if (isset($_POST['UserProfileForm'])) {
-            $model->attributes = $_POST['UserProfileForm'];
-            
-//            print_r($model->attributes);
-            if ($model->validate()) {
-                $model->save();
+        if (isset($_POST['User'])) {
+            $model->attributes = $_POST['User'];            
+            if ($model->save()) {
                 Yii::app()->user->setFlash('profileMessage', "Changes is saved.");
                 $this->redirect(array('/user/profile'));
             }
@@ -176,66 +174,6 @@ class UserController extends Controller {
             $this->render('recovery', array('form' => $form));
         }
     }
-
-    /**
-     * Deletes a particular model.
-     * If deletion is successful, the browser will be redirected to the 'admin' page.
-     * @param integer $id the ID of the model to be deleted
-     */
-    public function actionDelete($id) {
-        if (Yii::app()->request->isPostRequest) {
-            // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
-
-            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if (!isset($_GET['ajax'])) {
-                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-            }
-        } else {
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
-        }
-    }
-
-    /**
-     * Lists all models.
-     */
-    public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('User');
-        $this->render('index', array(
-            'dataProvider' => $dataProvider,
-        ));
-    }
-
-    /**
-     * Manages all models.
-     */
-    public function actionAdmin() {
-        $model = new User('search');
-        $model->unsetAttributes();  // clear any default values
-        if (isset($_GET['User'])) {
-            $model->attributes = $_GET['User'];
-        }
-
-        $this->render('admin', array(
-            'model' => $model,
-        ));
-    }
-
-    /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * If the data model is not found, an HTTP exception will be raised.
-     * @param integer $id the ID of the model to be loaded
-     * @return User the loaded model
-     * @throws CHttpException
-     */
-    public function loadModel($id) {
-        $model = User::model()->findByPk($id);
-        if ($model === null) {
-            throw new CHttpException(404, 'The requested page does not exist.');
-        }
-        return $model;
-    }
-
     /**
      * Performs the AJAX validation.
      * @param User $model the model to be validated
