@@ -26,7 +26,8 @@ class User extends CActiveRecord {
     const STATUS_NOACTIVE = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_BANNED = -1;
-
+	public $repeatpassword;
+	public $verifyCode;
     /**
      * @return string the associated database table name
      */
@@ -80,9 +81,9 @@ class User extends CActiveRecord {
             'password' => 'Password',
             'repeatpassword' => 'Retype Password',
             'email' => 'Email',
-            'birthdate' => 'Birthdate',
-            'surename' => 'Surename',
-            'lastname' => 'Lastname',
+            'birthdate' => 'Birth Date',
+            'surename' => 'Sure Name',
+            'lastname' => 'Last Name',
             'status' => 'Status',
             'address' => 'Address',
             'city' => 'City',

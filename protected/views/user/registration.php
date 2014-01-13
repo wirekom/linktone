@@ -26,7 +26,7 @@
 
         <?php echo $form->errorSummary($model); ?>
 
-        <?php echo $form->dropDownListControlGroup($model, 'products_id', $model->productsOptions, array('span' => 5)); ?>
+        <?php echo $form->dropDownListControlGroup($model, 'products_id', $model->productsOptions, array('span' => 2)); ?>
 
         <?php echo $form->textFieldControlGroup($model, 'username', array('span' => 5, 'maxlength' => 255)); ?>
 
@@ -34,9 +34,9 @@
 
         <?php echo $form->passwordFieldControlGroup($model, 'repeatpassword', array('span' => 5, 'maxlength' => 255)); ?>
 
-        <?php echo $form->textFieldControlGroup($model, 'email', array('span' => 5, 'maxlength' => 255)); ?>
+        <?php echo $form->textFieldControlGroup($model, 'email', array('span' => 3, 'maxlength' => 255)); ?>
 
-        <?php echo $form->datePickerControlGroup($model, 'birthdate', array('span' => 8, 'append' => '<icon class="icon-calendar"></icon>', 'pluginOptions' => array('format' => 'yyyy-mm-dd'))); ?>
+        <?php echo $form->datePickerControlGroup($model, 'birthdate', array('span' => 2, 'append' => '<icon class="icon-calendar"></icon>', 'pluginOptions' => array('format' => 'yyyy-mm-dd'))); ?>
 
         <?php echo $form->textFieldControlGroup($model, 'surename', array('span' => 5, 'maxlength' => 45)); ?>
 

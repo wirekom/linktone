@@ -1,5 +1,5 @@
 /* SLIDE */
-.caroufredsel_wrapper {float:none !important;}
+/* .caroufredsel_wrapper {float:none !important;}
 .list_carousel { position:relative; top:0;}
 .list_carousel a {color:#DE0000;}
 .list_carousel ul {margin: 0;padding: 0;list-style: none;display: block; z-index: 11; width:1550px; float:left; margin-left:55px;}
@@ -13,7 +13,7 @@
 .next { background-position: right top; right:0;
 	float: right;
 	margin-right: 10px;
-}
+} */
 
 .grid {margin: 0 auto;list-style: none;text-align: center;z-index:9;font-weight:lighter;}
 ul.grid {padding:0 !important; margin:0; padding:0;}
