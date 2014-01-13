@@ -67,7 +67,7 @@ return array(
             'connectionString' => 'pgsql:host=localhost;port=5432;dbname=linktone',
             'emulatePrepare' => true,
             'username' => 'postgres',
-            'password' => 'postgres',
+            'password' => 'postgre',
             'charset' => 'utf8',
         ),
         'errorHandler' => array(
