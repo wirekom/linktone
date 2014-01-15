@@ -128,6 +128,15 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   text-decoration: underline;
 }
 
+#login-form a{
+	text-decoration:none;
+	color:#CC0000;
+}
+#login-form a:hover{
+	text-decoration:underline;
+	color:#3d3939;
+}
+
 :-moz-placeholder {
   color: #c9c9c9 !important;
   font-size: 13px;

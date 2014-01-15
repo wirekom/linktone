@@ -27,18 +27,20 @@ class SiteController extends Controller {
     public function actionIndex() {
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
-        
-    	$products = Products::model()->findAllByAttributes(array('parent_id'=>NULL), $params);
-    	
-        $this->render('index',array(
-        	'products'=>$products
-        ));
+        $this->render('index');
     }
 	
     public function actionDetail() {
         // renders the view file 'protected/views/site/detail.php'
         // using the default layout 'protected/views/layouts/main.php'
         $this->render('detail');
+    }
+	
+	public function actionWatch() {
+		$this->layout = '//layouts/home';
+        // renders the view file 'protected/views/site/detail.php'
+        // using the default layout 'protected/views/layouts/main.php'
+        $this->render('watch');
     }
 
     /**
@@ -73,7 +75,7 @@ class SiteController extends Controller {
                 $this->redirect(Yii::app()->user->returnUrl);
         }
         // display the login form
-        $this->layout = '//layouts/singleform';
+         $this->layout = '//layouts/singleform';
         $this->render('login', array('model' => $model));
     }
 
