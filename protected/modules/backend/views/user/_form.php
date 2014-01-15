@@ -39,9 +39,6 @@
 
     <?php echo $form->dropDownListControlGroup($model, 'role_id', $model->roleOptions, array('span' => 5)); ?>
 
-    <?php echo $form->dropDownListControlGroup($model, 'products_id', $model->productsOptions, array('span' => 5)); ?>
-
-
     <div class="form-actions">
         <?php
         echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(

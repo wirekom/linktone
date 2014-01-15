@@ -25,7 +25,12 @@ $this->widget('bootstrap.widgets.TbGridView', array(
         'username',
         'email',
         'birthdate',
-        'status',
+        array(
+            'name' => 'status',
+            'type' => 'raw',
+            'value' => 'CHtml::encode($data->statusText)',
+            'filter' => $model->statusOptions,
+        ),
         /*
           'surename',
           'lastname',
