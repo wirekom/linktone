@@ -1,23 +1,23 @@
 <?php
 /* @var $this ProductsController */
-/* @var $model Products */
+/* @var $products Products */
 ?>
 
 <?php
-$this->breadcrumbs=array(
-	'Products'=>array('index'),
-	$model->name=>array('view','id'=>$model->id),
-	'Update',
+$this->breadcrumbs = array(
+    'Products' => array('index'),
+    $products->name => array('view', 'id' => $products->id),
+    'Update',
 );
 
-$this->menu=array(
-	array('label'=>'Manage', 'url'=>array('admin'), 'icon' => 'list-alt'),
-	array('label'=>'List', 'url'=>array('index'), 'icon'=>'list'),
-	array('label'=>'Create', 'url'=>array('create'), 'icon'=>'file'),
-	array('label'=>'View', 'url'=>array('view', 'id'=>$model->id), 'icon'=>'eye-open'),
+$this->menu = array(
+    array('label' => 'Manage', 'url' => array('admin'), 'icon' => 'list-alt'),
+    array('label' => 'List', 'url' => array('index'), 'icon' => 'list'),
+    array('label' => 'Create', 'url' => array('create'), 'icon' => 'file'),
+    array('label' => 'View', 'url' => array('view', 'id' => $products->id), 'icon' => 'eye-open'),
 );
 ?>
 
-    <h1>Update Products <?php echo $model->id; ?></h1>
+<h1>Update Products <?php echo $products->id; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('products' => $products)); ?>

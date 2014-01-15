@@ -51,11 +51,11 @@ $this->breadcrumbs = array(
 	<div class="kanan">
 		<div class="sub">
 			<section class="att">
-				<h2>Search your movie</h2>
+				<h2>Subscribe Now</h2>
 			</section>
 			<form method="post" action="" id="searchForm" class="search-form">
-			<input type="text" id="" name="" placeholder="Search movie" class="span4">
-			<button name="yt3" type="submit" class="btn">Search</button>
+			<input type="text" id="" name="" placeholder="Email" class="span4">
+			<button name="yt3" type="submit" class="btn">SUBMIT</button>
 			</form>
 		</div>
 	</div>

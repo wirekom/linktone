@@ -26,8 +26,10 @@ class User extends CActiveRecord {
     const STATUS_NOACTIVE = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_BANNED = -1;
-	public $repeatpassword;
-	public $verifyCode;
+
+    public $repeatpassword;
+    public $verifyCode;
+
     /**
      * @return string the associated database table name
      */
@@ -66,7 +68,7 @@ class User extends CActiveRecord {
         return array(
             'bills' => array(self::HAS_MANY, 'Bills', 'user_id'),
             'role' => array(self::BELONGS_TO, 'Role', 'role_id'),
-            'products' => array(self::BELONGS_TO, 'Products', 'products_id'),
+            'products' => array(self::MANY_MANY, 'Products', 'user_products(user_id, product_id)'),
             'accessLogs' => array(self::HAS_MANY, 'AccessLog', 'user_id'),
         );
     }
@@ -90,7 +92,6 @@ class User extends CActiveRecord {
             'province' => 'Province',
             'country' => 'Country',
             'role_id' => 'Role',
-            'products_id' => 'Products',
         );
     }
 
@@ -120,7 +121,6 @@ class User extends CActiveRecord {
         $criteria->compare('lastname', $this->lastname, true);
         $criteria->compare('status', $this->status, true);
         $criteria->compare('role_id', $this->role_id);
-        $criteria->compare('products_id', $this->products_id);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
