@@ -25,8 +25,6 @@
 
     <?php echo $form->passwordFieldControlGroup($model, 'password', array('span' => 5, 'maxlength' => 255, 'autocomplete' => 'off')); ?>
 
-    <?php echo $form->passwordFieldControlGroup($model, 'repeatpassword', array('span' => 5, 'maxlength' => 255)); ?>
-
     <?php echo $form->textFieldControlGroup($model, 'email', array('span' => 5, 'maxlength' => 255)); ?>
 
     <?php echo $form->datePickerControlGroup($model, 'birthdate', array('span' => 8, 'append' => '<icon class="icon-calendar"></icon>', 'pluginOptions' => array('format' => 'yyyy-mm-dd'))); ?>

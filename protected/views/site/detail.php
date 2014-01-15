@@ -4,12 +4,13 @@ $this->breadcrumbs=array(
 	'Detail',
 );
 
+if($products != NULL){
 ?>
 <!-- Detail START -->
 <div class="detail l">                             	
 	<div class="det">                             	
 		<div class="judul">
-			<h3>BATMAN BEGIN</h3>
+			<h3><?php echo $products->name?></h3>
 		</div>
 		<div class="hoaam">
 			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/content/display.jpg" alt="display" />
@@ -22,8 +23,8 @@ $this->breadcrumbs=array(
 <div class="howareyou">
 	<div class="stuck">
 		<div class="gambar"><!-- Gambar Movie -->
-			<a class="thumbnail" href="<?php echo Yii::app()->request->baseUrl; ?>/images/content/parker.jpg" title="">
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/content/parker.jpg" alt="img06">
+			<a class="thumbnail" href="<?php echo Yii::app()->request->baseUrl; ?>/images/content/default.jpg" title="">
+				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/content/default.jpg" alt="default.jpg">
 			</a>
 			
 			<span class="lope">
@@ -85,6 +86,9 @@ $this->breadcrumbs=array(
 		<a href="#" class="btn pull-right">WATCH in HD 20000Rs 5/month</a>
 	</div>
 </div>
+<?php 
+}
+?>
 <h1>Related Movie
 	<img width="15" height="19" alt="arrow" src="<?php echo Yii::app()->request->baseUrl; ?>/images/tpl/icon/arrow.png">
 </h1>

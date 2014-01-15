@@ -41,6 +41,12 @@ class UserController extends Controller {
             'model' => $this->loadUser(),
         ));
     }
+    
+    public function actionTestemail() {
+        if(User::sendMail("indra@wirekom.co.id", "You registered from " . Yii::app()->name, "Please activate you account go to bla bla bla" ))
+        echo "sukses";
+        else var_dump(User::sendMail("indra@wirekom.co.id", "You registered from " . Yii::app()->name, "Please activate you account go to bla bla bla" ));
+    }
 
     /**
      * Creates a new model.

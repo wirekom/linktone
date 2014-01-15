@@ -34,11 +34,33 @@ class SiteController extends Controller {
         	'products'=>$products
         ));
     }
+    
+    public function actionProduct($id) {
+        // renders the view file 'protected/views/site/index.php'
+        // using the default layout 'protected/views/layouts/main.php'
+        
+    	$products = Products::model()->findByPk($id);
+    	$allItems = Products::model()->findAllByAttributes(array('parent_id'=>$id),array(
+    		'order' => 'id DESC'
+    	));
+        $this->render('products',array(
+        	'products'=>$products,
+        	'items'=>$allItems
+        ));
+    }
 	
-    public function actionDetail() {
+    public function actionDetail($id = 0) {
         // renders the view file 'protected/views/site/detail.php'
         // using the default layout 'protected/views/layouts/main.php'
-        $this->render('detail');
+        
+    	if ($id != 0){
+    		$products = Products::model()->findByPk($id);
+    	}else{
+    		$products= NULL;
+    	}
+        $this->render('detail',array(
+        	'products'=>$products,
+        ));
     }
 
     /**

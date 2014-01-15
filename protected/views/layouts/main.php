@@ -108,7 +108,7 @@
 								if(isset($pro->products) && count($pro->products) > 0){
 									echo "<ul>";
 									foreach ($pro->products as $subpro){
-										echo '<li><a href="#" title="'.$subpro->name.'">'.$subpro->name.'</a></li>';
+										echo '<li><a href="'.Yii::app()->createUrl('site/product/id/'.$subpro->id).'" title="'.$subpro->name.'">'.$subpro->name.'</a></li>';
 									}
 									echo "</ul>";
 								}
@@ -130,18 +130,28 @@
 					<!-- USER START -->
 					<div class="user l">
 						<ul>
-							<li><a href="#" title="Upgrade previllage">UPGRADE</a></li>
-							<li><a href="#" title="Nama USer">Si Fulan (0)</a>
+						<?php 
+						if(Yii::app()->user->isGuest){
+						?>
+						<li><a href="<?php echo Yii::app()->createUrl('/user/registration')?>" title="Register">REGISTER</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('/site/login')?>" title="Login"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/tpl/icon/login.png" width="50" height="50" alt="LOGIN" /></a></li>
+						<?php }
+						else{ 
+						?>
+							<!--<li><a href="#" title="Upgrade previllage">UPGRADE</a></li>-->
+							<li><a href="#" title="Nama USer"><?php echo Yii::app()->user->name?></a>
 								<ul>
-									<li><a href="#" title="Akun">Akun</a></li>
+									<li><a href="<?php echo Yii::app()->createUrl('/user/profile')?>" title="Akun">Akun</a></li>
 									<li><a href="#" title="Pesan">Pesan <span class="r">(0)</span></a></li>
 									<li><a href="#" title="favorit">Favorit</a></li>
 									<li><a href="#" title="Petunjuk">Petunjuk</a></li>
-									<li><a href="#" title="Keluar">Keluar</a></li>
+									<li><a href="<?php echo Yii::app()->createUrl('/site/logout')?>" title="Keluar">Keluar</a></li>
 								</ul>
 							</li>
 							<li><a href="#" title="Avatar"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/tpl/icon/avatar.jpg" width="50" height="50" alt="avatar user" /></a></li>
+						<?php }?>
 						</ul>
+
 					</div>
 					<!-- USER END -->
 				</div>
