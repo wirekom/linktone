@@ -15,27 +15,55 @@ $this->menu = array(
         <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
     </div>
 <?php endif; ?>
+
 <?php
-$this->widget('zii.widgets.CDetailView', array(
-    'htmlOptions' => array(
-        'class' => 'table table-striped table-condensed table-hover',
-    ),
-    'data' => $model,
-    'attributes' => array(
+$this->widget('bootstrap.widgets.TbTabs', array(
+    'tabs' => array(
         array(
-            'name' => 'products_id',
-            'type' => 'raw',
-            'value' => CHtml::link(CHtml::encode($model->products->name), array('backend/products/view', 'id' => $model->products_id)),
+            'label' => 'Profile',
+            'active' => true,
+            'content' => $this->widget('zii.widgets.CDetailView', array(
+                'htmlOptions' => array(
+                    'class' => 'table table-striped table-condensed table-hover',
+                ),
+                'data' => $model,
+                'attributes' => array(
+                    'username',
+                    'surename',
+                    'lastname',
+                    'email',
+                    'birthdate',
+                    'address',
+                    'country',
+                    'province',
+                    'city',
+                )), true)
         ),
-        'username',
-        'surename',
-        'lastname',
-        'email',
-        'birthdate',
-        'address',
-        'country',
-        'province',
-        'city',
+        array(
+            'label' => 'Your Product',
+            'content' => $this->widget('bootstrap.widgets.TbGridView', array(
+                'id' => 'products-grid',
+                'dataProvider' => new CArrayDataProvider($model->products),
+                'columns' => array(
+                    array(
+                        'name' => 'type_product',
+                        'type' => 'raw',
+                        'value' => 'CHtml::encode($data->typeText)',
+                    ),
+                    array(
+                        'name' => 'parent_id',
+                        'type' => 'raw',
+                        'value' => 'CHtml::encode($data->parentName)',
+                    ),
+                    'name',
+                ),
+            ), true)
+            
+        ),
+        array(
+            'label' => 'Your Balance',
+            'content' => $model->balance
+        ),
     ),
 ));
 ?>

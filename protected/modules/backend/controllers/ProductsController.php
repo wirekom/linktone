@@ -13,7 +13,7 @@ class ProductsController extends Controller {
      */
     public function filters() {
         return array(
-            'WAuth', 
+            'WAuth',
         );
     }
 
@@ -32,20 +32,24 @@ class ProductsController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        $model = new Products;
+        $products = new Products;
+        $products->productDescription = new ProductDescription;
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['Products'])) {
-            $model->attributes = $_POST['Products'];
-            if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
+        if (isset($_POST['Products']) && isset($_POST['ProductDescription'])) {
+            $products->attributes = $_POST['Products'];
+            $products->productDescription->attributes = $_POST['ProductDescription'];
+            if ($products->save()) {
+                $products->productDescription->product_id = $products->id;
+                if ($products->productDescription->save())
+                    $this->redirect(array('view', 'id' => $products->id));
             }
         }
 
         $this->render('create', array(
-            'model' => $model,
+            'products' => $products
         ));
     }
 
@@ -55,20 +59,22 @@ class ProductsController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
-        $model = $this->loadModel($id);
+        $products = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if (isset($_POST['Products'])) {
-            $model->attributes = $_POST['Products'];
-            if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
+        if (isset($_POST['Products']) && isset($_POST['ProductDescription'])) {
+            $products->attributes = $_POST['Products'];
+            $products->productDescription->attributes = $_POST['ProductDescription'];
+            $products->productDescription->product_id = $products->id;
+            if ($products->save() && $products->productDescription->save()) {
+                $this->redirect(array('view', 'id' => $products->id));
             }
         }
 
         $this->render('update', array(
-            'model' => $model,
+            'products' => $products
         ));
     }
 
@@ -127,6 +133,9 @@ class ProductsController extends Controller {
         $model = Products::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
+        } else {
+            if ($model->productDescription === null)
+                $model->productDescription = new ProductDescription;
         }
         return $model;
     }

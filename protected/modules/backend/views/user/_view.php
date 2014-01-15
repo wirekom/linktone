@@ -33,11 +33,6 @@
         <?php echo CHtml::encode($data->role->name); ?>
         <br />
     <?php endif; ?>
-    <?php if ($data->products !== NULL): ?>
-        <b><?php echo CHtml::encode($data->getAttributeLabel('products_id')); ?>:</b>
-        <?php echo CHtml::encode($data->products->name); ?>
-        <br />
-    <?php endif; ?>
 
 
 </div>

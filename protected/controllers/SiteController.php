@@ -27,14 +27,14 @@ class SiteController extends Controller {
     public function actionIndex() {
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
-        
-    	$products = Products::model()->findAllByAttributes(array('parent_id'=>NULL), $params);
-    	
-        $this->render('index',array(
-        	'products'=>$products
+
+        $products = Products::model()->findAllByAttributes(array('parent_id' => NULL));
+
+        $this->render('index', array(
+            'products' => $products
         ));
     }
-	
+
     public function actionDetail() {
         // renders the view file 'protected/views/site/detail.php'
         // using the default layout 'protected/views/layouts/main.php'
