@@ -13,6 +13,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/moviebay.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/images/JQ/skin.css" />
+        <!-- Bootstrap css-->
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/cssBootstrap/bootstrap.css" /> 
+		
 
         <!-- include jQuery + carouFredSel plugin -->
         <script type="text/javascript" language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.8.2.min.js"></script>
@@ -99,24 +102,66 @@
 					<!-- Menu Start -->
 					<nav>
 						<ul class="menu">
-						<?php 
-						$prduct = Products::model()->findAllByAttributes(array('parent_id'=>NULL), $params);
-						if($prduct != null){
-							foreach ($prduct as $pro){
-								echo "<li>";
-								echo '<a href="#" title="'.$pro->name.'">'.$pro->name.'</a>';
-								if(isset($pro->products) && count($pro->products) > 0){
-									echo "<ul>";
-									foreach ($pro->products as $subpro){
-										echo '<li><a href="#" title="'.$subpro->name.'">'.$subpro->name.'</a></li>';
-									}
-									echo "</ul>";
-								}
-								echo "</li>";	
-							}
-						}
-						?>
-							
+							<li>
+								<a href="channel.html" title="Channel">CHANNEL</a>
+								<ul>
+									<li><a href="#">RCTI</a></li>
+									<li><a href="#">MNC TV</a></li>
+									<li><a href="#">Global TV</a></li>	
+									<li><a href="#">Sindo TV</a></li>
+									<li><a href="#">MNC News</a></li>
+									<li><a href="#">MNC Business</a></li>
+									<li><a href="#">MNC Sport</a></li>
+									<li><a href="#">MNC Lifestyle</a></li>
+									<li><a href="#">MNC Kids</a></li>
+									<li><a href="#">MNC Fashion</a></li>
+									<li><a href="#">MNC Drama</a></li>
+									<li><a href="#">MNC Muslim</a></li>
+									<li><a href="#">MNC Food</a></li>
+									<li><a href="#">MNC Travel</a></li>
+									<li><a href="#">MNC Shop</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="movie.html" title="Movie">MOVIE</a>
+								<ul>
+									<li><a href="#">Disney</a></li>
+									<li><a href="#">Western</a></li>
+									<li><a href="#">Chinese</a></li>
+									<li><a href="#">Indonesian</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="tv.html" title="TV Show">TV SERIES</a>
+								<ul>
+									<li><a href="#">Disney</a></li>
+									<li><a href="#">Western</a></li>
+									<li><a href="#">Chinese</a></li>
+									<li><a href="#">MNC TV Movies</a></li>
+									<li><a href="#">MNC Drama Series</a></li>
+									<li><a href="#">MNC Comedy Series</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="kods.html" title="TV Show">KIDS</a>
+								<ul>
+									<li><a href="#">Animated Series</a></li>
+									<li><a href="#">Animated Movie</a></li>
+									<li><a href="#">Family Movie</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="clip.html" title="Video Clip">CLIP</a>
+								<ul>
+									<li><a href="#">Seputar Indonesia Clips</a></li>
+									<li><a href="#">Intens Clips</a></li>
+									<li><a href="#">Silet Clips</a></li>
+									<li><a href="#">Go Spot Clips</a></li>
+									<li><a href="#">Obsesi Clips</a></li>
+									<li><a href="#">Fokus Selebriti Clips</a></li>
+									<li><a href="#">Dahsyat Clips</a></li>
+								</ul>
+							</li>
 						</ul>
 					</nav>
 					<!-- Menu END -->
