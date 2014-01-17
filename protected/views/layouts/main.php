@@ -13,6 +13,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/moviebay.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/images/JQ/skin.css" />
+        <!-- Bootstrap css-->
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/cssBootstrap/bootstrap.css" /> 
+		
 
         <!-- include jQuery + carouFredSel plugin -->
         <script type="text/javascript" language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.8.2.min.js"></script>
@@ -99,6 +102,7 @@
 					<!-- Menu Start -->
 					<nav>
 						<ul class="menu">
+
 						<?php 
 						$prduct = Products::model()->findAllByAttributes(array('parent_id'=>NULL), $params);
 						if($prduct != null){
