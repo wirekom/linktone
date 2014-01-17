@@ -35,16 +35,19 @@ nav ul.menu li:hover > ul li a:hover {background:#FFF; color:#ffc200; display:bl
 .search form input[type="submit"] {width: 35px; float:left; cursor:pointer; background:none; border: none; height:43px;}
 
 /* USER */
-.user {width:283px; height:73px; float:right; z-index:9000 !important;}
+.user {width:254px; height:73px; float:right; z-index:9000 !important;}
 .user ul {padding:0; margin:0; position: relative; top:0; height:70px; float:right;}
-.user ul li {display:inline-block; padding:0 5px 25px;}
-.user ul li a img {position:relative; top:12px; /*border:1px solid #b00000*/}
+.user ul li {display:inline-block; padding:0 5px 25px;height: 60px;} 
+.user ul li a img {position:relative; top:12px; border:1px solid #b00000}
 .user ul li a {color:#f0f0f0;text-shadow: 1px 1px 1px #B00000;}
 .user ul li a:hover {text-shadow: 1px 1px 1px #B00000; color:#ffc200;}
 .user ul li ul {display:none; visibility: hidden;}
+.user ul li ul li{
+	
+}
 .user ul li:hover a{background:url(../images/tpl/bg/menu-hover.jpg) top repeat-x;}
 .user ul li:hover > ul {display:block; visibility:visible;padding:20px 10px 20px 10px;border:1px solid #a60000;border-top:2px;display:block; position: absolute; top:70px; left: auto; width:200px; margin:2px 0 0 -60px;height:auto;border-radius:0 0 5px 5px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;background-color:#B00; background-image: none; float:left;border-radius: 0 0 10px 10px;}
-.user ul li:hover > ul li {float: none; width:100%;border-bottom:1px solid #a60000; padding:10px 0;}
+.user ul li:hover > ul li {float: none; width:100%;border-bottom:1px solid #a60000; padding:5px 0;height:30px;}
 .user ul li:hover > ul li a {background: none !important; padding: 5px 10px; color:#DDD; font-size:14px;}
 .user ul li:hover > ul li a:hover {background:#FFF; color:#ffc200; padding:10px;}
 
@@ -111,6 +114,7 @@ nav ul.menu li:hover > ul li a:hover {background:#FFF; color:#ffc200; display:bl
 	font-size:20px;
 	font-weight:400px;
 	color:#cc0000;
+	text-transform: uppercase;
 }
 .sisi .kanan .search-form{
     background:url(../images/kicer.png) center top no-repeat;

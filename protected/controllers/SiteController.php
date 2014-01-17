@@ -19,7 +19,33 @@ class SiteController extends Controller {
             ),
         );
     }
+    
+ 	public function filters() {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+        );
+    }
 
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules() {
+        return array(
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'error', 'login', 'logout'),
+                'users' => array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions' => array('home', 'product', 'detail'),
+                'users' => array('@'),
+            ), 
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
+    }
     /**
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
@@ -27,18 +53,23 @@ class SiteController extends Controller {
     public function actionIndex() {
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
+       if(Yii::app()->user->isGuest){
+			$this->layout = '//layouts/home';
+       		$this->render('watch');
+       }else{
+       		$this->redirect(array('home'));
+       }
+        
 
-        $this->render('index');
+    }
 
-
-        $products = Products::model()->findAllByAttributes(array('parent_id' => NULL));
+	public function actionHome() {
+         $products = Products::model()->findAllByAttributes(array('parent_id' => NULL));
 
         $this->render('index', array(
             'products' => $products
         ));
-
     }
-
 
     public function actionProduct($id) {
         // renders the view file 'protected/views/site/index.php'
@@ -69,12 +100,6 @@ class SiteController extends Controller {
         ));
     }
 	
-	public function actionWatch() {
-		$this->layout = '//layouts/home';
-        // renders the view file 'protected/views/site/detail.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        $this->render('watch');
-    }
 
     /**
      * This is the action to handle external exceptions.
