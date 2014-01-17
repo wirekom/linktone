@@ -58,6 +58,18 @@ $this->breadcrumbs = array(
 			<button name="yt3" type="submit" class="btn">SUBMIT</button>
 			</form>
 		</div>
+		<div class="soksial">
+			<ul class="konek">
+				<li><a href="" class="fb"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fb.png" alt="Sign In Facebook"/></a></li>
+				<li><a href="" class="twit"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/twit.png" alt="Sign In Twitter"/></a></li>
+				<li><a href="" class="twit"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/log.png" alt="Sign In Account"/></a></li>
+			</ul>
+			<div class="tex">
+				<h2>Lorem ipsum dolor sit amet</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper urna id massa rutrum imperdiet. Duis ut adipiscing tellus. Duis blandit, nisl dapibus tincidunt adipiscing, nisl orci consectetur mi, eget consequat orci metus ut urna. Praesent laoreet suscipit commodo. 
+				</p>
+			</div>
+		</div>
 	</div>
 </div>
 
