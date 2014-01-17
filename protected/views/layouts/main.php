@@ -26,7 +26,7 @@
         <script type="text/javascript" language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/helper-plugins/jquery.mousewheel.min.js"></script>
         <script type="text/javascript" language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/helper-plugins/jquery.touchSwipe.min.js"></script>
         <script type="text/javascript" language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/helper-plugins/jquery.transit.min.js"></script>
-        <script type="text/javascript" language="javascript" sr	c="<?php echo Yii::app()->request->baseUrl; ?>/js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+        <script type="text/javascript" language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
         <script type="text/javascript" language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.jcarousel.js"></script>
 
         <!-- fire plugin onDocumentReady -->

@@ -8,6 +8,8 @@ class UserController extends Controller {
      */
     public $layout = '//layouts/column2';
     public $defaultAction = 'profile';
+    public $loginUrl = 'user/login';
+    public $logoutUrl = 'user/logout';
     private $_model;
 
     /**
@@ -15,7 +17,7 @@ class UserController extends Controller {
      */
     public function filters() {
         return array(
-            'WAuth',
+            'WAuth - login, logout, captcha, registration, activation, recovery',
         );
     }
 
@@ -60,7 +62,7 @@ class UserController extends Controller {
         if (isset($_POST['UserRegistrationForm'])) {
             $model->attributes = $_POST['UserRegistrationForm'];
             $model->activkey = sha1(microtime() . $model->password);
-            $model->role_id = NULL;
+            $model->role_id = Yii::app()->params['general-user-role'];
             if ($model->save()) {
                 $activation_url = $this->createAbsoluteUrl('/user/activation', array("activkey" => $model->activkey, "email" => $model->email));
                 User::sendMail($model->email, "You registered from " . Yii::app()->name, "Please activate you account go to " . $activation_url);
@@ -97,11 +99,11 @@ class UserController extends Controller {
 
     public function actionEdit() {
         if (!Yii::app()->user->id)
-            $this->redirect(array('/site/login'));
+            $this->redirect(array($this->loginUrl));
 
         $model = UserProfileForm::model()->findByPk(Yii::app()->user->id);
         if (isset($_POST['User'])) {
-            $model->attributes = $_POST['User'];            
+            $model->attributes = $_POST['User'];
             if ($model->save()) {
                 Yii::app()->user->setFlash('profileMessage', "Changes is saved.");
                 $this->redirect(array('/user/profile'));
@@ -131,7 +133,7 @@ class UserController extends Controller {
             }
             $this->render('changepassword', array('model' => $model));
         } else
-            $this->redirect(Yii::app()->createUrl('site/login'));
+            $this->redirect(Yii::app()->createUrl($this->loginUrl));
     }
 
     public function actionRecovery($activkey = NULL, $email = NULL) {
@@ -180,6 +182,7 @@ class UserController extends Controller {
             $this->render('recovery', array('form' => $form));
         }
     }
+
     /**
      * Performs the AJAX validation.
      * @param User $model the model to be validated
@@ -192,6 +195,39 @@ class UserController extends Controller {
     }
 
     /**
+     * Displays the login page
+     */
+    public function actionLogin() {
+        $this->layout = '//layouts/singleform';
+
+        $model = new LoginForm;
+
+        // if it is ajax validation request
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+
+        // collect user input data
+        if (isset($_POST['LoginForm'])) {
+            $model->attributes = $_POST['LoginForm'];
+            // validate user input and redirect to the previous page if valid
+            if ($model->validate() && $model->login())
+                $this->redirect(Yii::app()->user->returnUrl);
+        }
+        // display the login form
+        $this->render('login', array('model' => $model));
+    }
+
+    /**
+     * Logs out the current user and redirect to homepage.
+     */
+    public function actionLogout() {
+        Yii::app()->user->logout();
+        $this->redirect(Yii::app()->homeUrl);
+    }
+
+    /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer the primary key value. Defaults to null, meaning using the 'id' GET variable
@@ -201,7 +237,7 @@ class UserController extends Controller {
             if (Yii::app()->user->id)
                 $this->_model = User::model()->findByPk(Yii::app()->user->id);
             if ($this->_model === null)
-                $this->redirect(Yii::app()->createUrl('site/login'));
+                $this->redirect(Yii::app()->createUrl($this->loginUrl));
         }
         return $this->_model;
     }

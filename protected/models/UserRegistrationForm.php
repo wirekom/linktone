@@ -16,7 +16,7 @@ class UserRegistrationForm extends User {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('birthdate, password, email, city, province, country, products_id', 'required'),
+            array('birthdate, password, email, address, city, province, country, products_id', 'required'),
             array('repeatpassword', 'compare', 'compareAttribute' => 'password', 'message' => "Passwords don't match"),
             array('email', 'length', 'max' => 255),
             array('surename, lastname', 'length', 'max' => 45),

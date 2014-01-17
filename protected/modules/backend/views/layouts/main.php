@@ -25,7 +25,6 @@
                             array('label' => 'Data Master', 'url' => array('#'), 'visible' => !Yii::app()->user->isGuest, 'items' => array(
                                     array('label' => 'Payment Methods', 'url' => array('/backend/paymentMethods')),
                                     array('label' => 'Bills', 'url' => array('/backend/bills')),
-                                    array('label' => 'Type Product', 'url' => array('/backend/typeProduct')),
                                     array('label' => 'Products', 'url' => array('/backend/products')),
                                     array('label' => 'User', 'url' => array('/backend/user')),
                                     array('label' => 'Role', 'url' => array('/backend/role')),

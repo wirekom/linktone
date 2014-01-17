@@ -19,25 +19,26 @@
 
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
-    <?php echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary($products); ?>
+    <?php // echo $form->errorSummary(array($products, $productDescription)); ?>
 
-    <?php echo $form->dropDownListControlGroup($model, 'parent_id', $model->productsOptions, array('empty' => 'root'), array('span' => 5)); ?>
-
-    <?php echo $form->dropDownListControlGroup($model, 'type_product', $model->typeOptions, array('span' => 5)); ?>
-
-    <?php echo $form->textFieldControlGroup($model, 'name', array('span' => 5, 'maxlength' => 255)); ?>
-
-    <?php echo $form->textFieldControlGroup($model, 'zte_product_code', array('span' => 5, 'maxlength' => 45)); ?>
-
-    <?php echo $form->textFieldControlGroup($model, 'price', array('span' => 5)); ?>
-
+    <?php
+    $this->widget('bootstrap.widgets.TbTabs', array(
+        'tabs' => array(
+            array(
+                'label' => 'Product',
+                'active' => true,
+                'content' => $this->renderPartial('_fproduct', array('products' => $products, 'form' => $form), true)
+            ),
+            array(
+                'label' => 'Description',
+                'content' => $this->renderPartial('_fdescription', array('productDescription' => $products->productDescription, 'form' => $form), true)
+            ),
+        ),
+    ));
+    ?>
     <div class="form-actions">
-        <?php
-        echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array(
-            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            'size' => TbHtml::BUTTON_SIZE_LARGE,
-        ));
-        ?>
+        <?php echo TbHtml::submitButton($products->isNewRecord ? 'Create' : 'Save'); ?>
     </div>
 
     <?php $this->endWidget(); ?>
