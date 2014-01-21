@@ -1,0 +1,67 @@
+/* General Demo Style */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+.main,
+.container > header {
+	width: 100%;
+	height:240px;
+	margin: 0 auto;
+	padding: 0 1.875em 3.125em 1.875em;
+}
+
+.container > header .top {background:url(../images/header.png) top center no-repeat; position:absolute; top:0; left:0; width:100%; height:240px; z-index:2;}
+.container > header {
+}
+
+.container > header nav .hl h1 {
+	font-size: 2.25em;
+	line-height: 1.3;
+	margin: 0;
+	float: left;
+	font-weight: 400;
+}
+
+
+
+.container > header nav { z-index:1; -webkit-box-shadow: inset 0px 0px 20px 10px #E0E0E0; box-shadow: inset 0px 0px 20px 10px #E0E0E0; border:1px solid #FFF;
+	background-image:url(../images/bg.png); padding:200px 0 75px;-webkit-border-radius: 10px;
+    border-radius: 10px; 
+	margin: 0 10%; height: auto;	
+}
+
+.container > header nav .h1 {margin-bottom:20px; font-size:1.25em; text-align:center; line-height: 38px; color:#5b5b5b; text-shadow: 1px 1px 1px #FFF;}
+.container > header nav .sub {background:url(../images/box.png) top center no-repeat; width:857px; height:197px; margin: 0 auto;}
+.container > header nav .sub form {padding: 85px 125px; float: left;}
+.container > header nav .sub form input[type="text"] {width: 485px; border:none; float:left; height:30px; padding: 5px; font-size:14px;}
+.container > header nav .sub form input[type="submit"] {width:120px; float:left; border:none; background: none; height:30px; padding:5px; cursor:pointer;}
+
+
+.icon-drop:before, 
+.icon-arrow-left:before {
+	font-family: 'fontawesome';
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 2;
+	text-align: center;
+	color: #47a3da;
+	-webkit-font-smoothing: antialiased;
+	text-indent: 8000px;
+	padding-left: 8px;
+}
+
+.container > header nav a:hover:before {
+	color: #fff;
+}
+
+.icon-drop:before {
+	content: "\e000";
+}
+
+.icon-arrow-left:before {
+	content: "\f060";
+}

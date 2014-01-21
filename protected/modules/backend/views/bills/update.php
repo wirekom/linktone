@@ -18,6 +18,9 @@ $this->menu = array(
 );
 ?>
 
-<h1>Update Bills <?php echo $model->invoice_no; ?></h1>
+<?php 
+$this->pageTitle = "Update Bills".$model->invoice_no;
+?>
+
 
 <?php $this->renderPartial('_form', array('model' => $model)); ?>

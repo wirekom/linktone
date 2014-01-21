@@ -15,6 +15,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Bills</h1>
+<?php 
+$this->pageTitle = "Create Bills";
+?>
+
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

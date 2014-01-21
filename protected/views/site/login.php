@@ -44,7 +44,7 @@ $this->breadcrumbs = array(
                     'size' => TbHtml::BUTTON_SIZE_LARGE,
                 ));
                 echo TbHtml::resetButton('Reset');
-                echo TbHtml::button('Home');
+                echo TbHtml::button('Home',array('onClick'=>"window.location='".Yii::app()->createUrl('/site/index')."'"));
                 ?>
             </div>
 

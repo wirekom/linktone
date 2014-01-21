@@ -14,7 +14,10 @@ $this->menu = array(
 );
 ?>
 
-<h1>Manage Bills</h1>
+<?php 
+$this->pageTitle = "Manage Bills";
+?>
+
 
 <?php
 $this->widget('bootstrap.widgets.TbGridView', array(

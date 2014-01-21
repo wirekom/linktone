@@ -62,7 +62,7 @@ $this->breadcrumbs = array(
 			<ul class="konek">
 				<li><a href="" class="fb"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/fb.png" alt="Sign In Facebook"/></a></li>
 				<li><a href="" class="twit"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/twit.png" alt="Sign In Twitter"/></a></li>
-				<li><a href="" class="twit"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/log.png" alt="Sign In Account"/></a></li>
+				<li><a href="<?php echo Yii::app()->createUrl('/site/login')?>" class="twit"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/log.png" alt="Sign In Account"/></a></li>
 			</ul>
 			<div class="tex">
 				<h2>Lorem ipsum dolor sit amet</h2>

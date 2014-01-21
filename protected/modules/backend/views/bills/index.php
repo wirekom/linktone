@@ -14,7 +14,10 @@ $this->menu=array(
 );
 ?>
 
-<h1>Bills</h1>
+<?php 
+$this->pageTitle = "Bills";
+?>
+
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

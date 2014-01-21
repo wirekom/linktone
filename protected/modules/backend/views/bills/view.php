@@ -18,7 +18,10 @@ $this->menu = array(
 );
 ?>
 
-<h1>View Bills #<?php echo $model->invoice_no; ?></h1>
+<?php 
+$this->pageTitle = "View Bills".$model->invoice_no;
+?>
+
 
 <?php
 $this->widget('zii.widgets.CDetailView', array(

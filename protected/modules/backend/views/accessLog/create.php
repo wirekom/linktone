@@ -15,6 +15,14 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create AccessLog</h1>
-
+<div class="span12">
+<div class="widget">
+<div class="widget-head"><h4 class="heading glyphicons conversation"><i></i>Manage Access Logs</h4></div>
+<div class="widget-body">
+<div class="linner">
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+
+</div>
+</div>
+</div>
+</div>
